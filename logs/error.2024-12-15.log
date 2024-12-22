@@ -1,0 +1,29 @@
+2024-12-15 10:35:47.555 [http-nio-8082-exec-2] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 10:36:53.181 [http-nio-8082-exec-2] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 10:38:24.822 [http-nio-8082-exec-4] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 10:38:36.505 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 10:45:24.733 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 10:50:04.324 [http-nio-8082-exec-5] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.kaiyu.mapper.BuildingMapper.selectBuildingInfoById
+2024-12-15 10:52:00.954 [http-nio-8082-exec-2] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:00:45.169 [http-nio-8082-exec-4] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:02:19.898 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:04:35.607 [http-nio-8082-exec-3] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:11:20.121 [http-nio-8082-exec-6] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:17:54.933 [http-nio-8082-exec-3] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:22:24.717 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:26:46.327 [http-nio-8082-exec-3] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Handler dispatch failed: java.lang.Error: Unresolved compilation problem: 
+	The method deleteBuildingInfoById(String) in the type IBuildingInfoService is not applicable for the arguments (Long)
+
+2024-12-15 11:28:43.154 [http-nio-8082-exec-8] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Handler dispatch failed: java.lang.Error: Unresolved compilation problem: 
+	The method deleteBuildingInfoById(String) in the type IBuildingInfoService is not applicable for the arguments (Long)
+
+2024-12-15 11:30:09.598 [http-nio-8082-exec-6] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.StaffInfo.getStaffNum()" because "staffInfo" is null
+2024-12-15 11:31:27.736 [http-nio-8082-exec-5] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Handler dispatch failed: java.lang.Error: Unresolved compilation problem: 
+	The method deleteBuildingInfoById(String) in the type IBuildingInfoService is not applicable for the arguments (Long)
+
+2024-12-15 11:33:49.682 [http-nio-8082-exec-2] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.BuildingInfo.getBuildingNum()" because "buildingInfo" is null
+2024-12-15 11:35:41.493 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.BuildingInfo.getBuildingNum()" because "buildingInfo" is null
+2024-12-15 11:36:03.292 [http-nio-8082-exec-1] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.kaiyu.mapper.BuildingMapper.selectBuildingInfoById
+2024-12-15 11:36:26.118 [http-nio-8082-exec-2] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.kaiyu.mapper.BuildingMapper.selectBuildingInfoById
+2024-12-15 11:36:58.077 [http-nio-8082-exec-4] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.kaiyu.mapper.BuildingMapper.selectBuildingInfoById
+2024-12-15 11:39:29.133 [http-nio-8082-exec-3] ERROR com.kaiyu.filter.AuthorizeFilter - token校验失败 : Request processing failed: java.lang.NullPointerException: Cannot invoke "com.kaiyu.domain.vo.BuildingInfo.getBuildingNum()" because "buildingInfo" is null

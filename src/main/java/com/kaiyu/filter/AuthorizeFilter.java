@@ -53,16 +53,21 @@ public class AuthorizeFilter implements Filter {
             }
         }
         String token = httpServletRequest.getHeader("Authorization");
+        // log.info("token : {}", token);
         if(StringUtils.isEmpty(token)){
             log.info("未认证");
             writeMessage(httpServletResponse, UN_AUTHORIZATION);
             return;
+        }
+        if (StringUtils.isNotEmpty(token) && token.startsWith("Bearer ")) {
+            token = token.substring(7); // 去掉 "Bearer " 前缀
         }
         //解析Token
         try {
             Claims claimsBody = JwtUtil.getClaimsBody(token);
             //  -1：有效，0：有效，1：过期，2：过期
             int verifyToken = JwtUtil.verifyToken(claimsBody);
+            log.info("verifyToken: {}", verifyToken);
             if(verifyToken > 0){
                 log.info("Token过期");
                 writeMessage(httpServletResponse, LOGIN_AGAIN);
@@ -70,8 +75,8 @@ public class AuthorizeFilter implements Filter {
             }
             //解析 分为两类用户 User  Admin
             UserInfo userInfo = new UserInfo();
-            @SuppressWarnings("all")
-            Long userId = claimsBody.get("userId", Long.class);
+            // @SuppressWarnings("all")
+            // Long userId = claimsBody.get("userId", Long.class);
             // if(ObjectUtils.isNotEmpty(userId)){
             //     // 是User
             //     userInfo.setUserId(userId);

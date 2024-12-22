@@ -5,6 +5,8 @@ import cn.hutool.core.bean.BeanUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import cn.hutool.core.collection.CollUtil;
+
 /**
  * 继承自 hutool 的BeanUtil，增加了bean转换时自定义转换器的功能
  */
@@ -45,14 +47,14 @@ public class BeanUtils extends BeanUtil {
 
     public static <R, T> List<T> copyList(List<R> list, Class<T> clazz) {
         if (list == null || list.size() == 0) {
-            return CollUtils.emptyList();
+            return CollUtil.empty(clazz);
         }
         return copyToList(list, clazz);
     }
 
     public static <R, T> List<T> copyList(List<R> list, Class<T> clazz, Convert<R, T> convert) {
         if (list == null || list.size() == 0) {
-            return CollUtils.emptyList();
+            return CollUtil.empty(clazz);
         }
         return list.stream().map(r -> copyBean(r, clazz, convert)).collect(Collectors.toList());
     }

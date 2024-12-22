@@ -3,13 +3,13 @@ package com.kaiyu.common.utils;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.collection.IterUtil;
 import com.kaiyu.common.validate.Checker;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import cn.hutool.core.util.NumberUtil;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 
 /**
  * 继承自 hutool 的集合工具类
@@ -112,13 +112,12 @@ public class CollUtils extends CollectionUtil {
      * @param data 要添加的数据
      * @param <T> 元素类型
      */
-    @SafeVarargs
     public static <T> void add(Collection<T> list, T... data) {
-        if (list == null || ArrayUtils.isEmpty(data)) {
+        if (list == null || ArrayUtil.isEmpty(data)) {
             return;
         }
         for (T t : data) {
-            if (ObjectUtils.isNotEmpty(t)) {
+            if (ObjectUtil.isNotEmpty(t)) {
                 list.add(t);
             }
         }
@@ -132,7 +131,7 @@ public class CollUtils extends CollectionUtil {
         }
         for (Map.Entry<Long, Integer> entry : map1.entrySet()) {
             Integer num = map2.get(entry.getKey());
-            map2.put(entry.getKey(), (num == null ? 0 : num) + entry.getValue());
+            map2.put(entry.getKey(), num == null ? 0 : num + entry.getValue());
         }
         return map2;
     }

@@ -122,7 +122,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         Page<Admin> page = lambdaQuery()
                 .like(ObjectUtils.isNotEmpty(dto.getUserName()), Admin::getUserName, dto.getUserName())
                 .eq(ObjectUtils.isNotEmpty(dto.getStatus()),Admin::getStatus, dto.getStatus())
-                .eq(Admin::getRole,"common")
+                .eq(Admin::getRole,"admin")
                 .page(dto.toMpPage());
         List<Admin> list = page.getRecords().stream().peek(a -> a.setPassword(null)).toList();
         page.setRecords(list);
@@ -156,7 +156,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
             throw new BadRequestException("用户已存在 Akun Telah Ada");
         }
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-        dto.setRole("common");
+        dto.setRole("admin");
         save(dto);
     }
 

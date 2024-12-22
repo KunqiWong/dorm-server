@@ -7,7 +7,7 @@ import lombok.Data;
 public class ModifyPasswordDTO {
 
     private String rawPassword;
+    
     private String newPassword;
-
 
 }
