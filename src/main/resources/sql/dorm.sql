@@ -23,19 +23,13 @@ CREATE TABLE IF NOT EXISTS `dorm`.`building_info`(
     `update_time` datetime DEFAULT (CURRENT_TIMESTAMP),
     `create_by` varchar(32) NULL DEFAULT '',
     `update_by` varchar(32) NULL DEFAULT '',
-    `seq` int NULL DEFAULT '100',
+    -- `seq` int NULL DEFAULT '100',
     PRIMARY KEY  (`id` ),
     KEY `idx_building_num` (`building_num` ),
     KEY `idx_floor` (`floor` ),
     KEY `idex_room_num` (`room_num` )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='宿舍楼栋信息';
 
-CREATE TABLE IF NOT EXISTS `dorm`.`dorm_dept`(
-    `id` bigint NOT NULL AUTO_INCREMENT,
-    `dept` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-    PRIMARY KEY  (`id` )
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='宿舍部门';
-00_ai_ci  COMMENT '房间申请记录表';
 
 CREATE TABLE IF NOT EXISTS `dorm`.`staff_info`(
     `id` varchar(20) NOT NULL AUTO_INCREMENT,
@@ -84,18 +78,6 @@ CREATE TABLE IF NOT EXISTS `dorm`.`dorm_log`(
     KEY `idx_type` (`operate_type` ),
     KEY `idx_date` (`create_time` )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  COMMENT '操作记录';
-
-CREATE TABLE IF NOT EXISTS `dorm`.`dorm_room_record`(
-    `id` bigint NOT NULL AUTO_INCREMENT,
-    `staff_name` varchar(255) NULL,
-    `staff_num` varchar(20) NULL,
-    `dept` varchar(255) NULL,
-    `create_time` datetime DEFAULT (CURRENT_TIMESTAMP),
-    `building_num` varchar(255) NULL,
-    `floor` varchar(255) NULL,
-    `room_num` varchar(20) NULL,
-    PRIMARY KEY  (`id` )
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_09
 
 CREATE TABLE IF NOT EXISTS `dorm`.`leave_info`(
     `id` bigint NOT NULL AUTO_INCREMENT,

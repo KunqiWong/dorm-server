@@ -61,6 +61,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
+import com.kaiyu.domain.dto.ExchangeRoomApplyDTO;
+
 
 @Service
 @Slf4j
@@ -79,7 +81,8 @@ public class CheckInServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo> 
 
     @Autowired
     private IDormLogService dormLogService;
-    
+
+
     @Override
     public BuildingRest getBuildingRest(BuildingListDTO dto) {
         //避免了 split() 等操作时遇到空值或数组越界的错误。
@@ -292,6 +295,15 @@ public class CheckInServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo> 
         // 记录日志
         dormLog.setRemark("调换记录：'"+dto.getStaffName()+"'从"+dto.getRoomNum()+"调入"+dto.getSelectedRoom()+","+dto.getSelectedStaff()+"从"+dto.getSelectedRoom()+"调入"+dto.getRoomNum()+", 原因："+dto.getChangeReason());
 
+        this.dormLogService.insertDormLog(dormLog);
+    }
+
+    @Override
+    public void exchangeRoomApply(ExchangeRoomApplyDTO dto) {
+        DormLog dormLog = new DormLog();
+        dormLog.setOperateType("调换申请记录");
+        // 记录日志
+        dormLog.setRemark("调换申请：'"+dto.getStaffName()+"'从'"+dto.getBuildingNum()+dto.getFloor()+dto.getRoomNum()+"'申请调入'"+dto.getSelectedBuilding()+dto.getSelectedFloor()+dto.getSelectedRoom()+"'");
         this.dormLogService.insertDormLog(dormLog);
     }
 

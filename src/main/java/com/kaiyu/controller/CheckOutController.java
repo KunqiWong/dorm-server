@@ -5,6 +5,7 @@ import com.kaiyu.domain.vo.StaffInfo;
 import com.kaiyu.domain.dto.BuildingListDTO;
 import com.kaiyu.domain.dto.StaffListDTO;
 import com.kaiyu.domain.dto.CheckOutListDTO;
+import com.kaiyu.domain.dto.CheckOutDTO;
 import com.kaiyu.domain.vo.DormLog;
 import com.kaiyu.domain.vo.LeaveInfo;
 import com.kaiyu.service.ICheckInService;
@@ -46,6 +47,10 @@ public class CheckOutController {
   public R<List<LeaveInfo>> getAll() {
     return R.ok(IcheckOutService.selectLeaveInfoAll());
   }
-  
+  @PostMapping("/checkOutStaff")
+  public R<Void> checkOutStaff(@RequestBody CheckOutDTO dto) {
+    IcheckOutService.checkOutStaff(dto);
+    return R.ok();
+  }
 
 }

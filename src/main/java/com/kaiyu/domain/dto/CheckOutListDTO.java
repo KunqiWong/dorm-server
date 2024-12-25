@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class CheckOutListDTO extends PageQuery {
 
+    private String operator;
+
     private Date startTime;
 
     private Date endTime;

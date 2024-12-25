@@ -9,6 +9,7 @@ import com.kaiyu.domain.vo.RoomRest;
 // import com.kaiyu.domain.LeaveInfo;
 import com.kaiyu.common.domain.PageR;
 import com.kaiyu.domain.dto.CheckOutListDTO;
+import com.kaiyu.domain.dto.CheckOutDTO;
 import com.kaiyu.domain.vo.LeaveInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
@@ -20,4 +21,6 @@ public interface ICheckOutService extends IService<LeaveInfo> {
   PageR<LeaveInfo> getCheckOutList(CheckOutListDTO dto);
   
   List<LeaveInfo> selectLeaveInfoAll();
+
+  void checkOutStaff(CheckOutDTO dto);
 }

@@ -6,6 +6,7 @@ import com.kaiyu.domain.dto.BuildingListDTO;
 import com.kaiyu.domain.dto.StaffListDTO;
 import com.kaiyu.domain.dto.CheckOutListDTO;
 import com.kaiyu.domain.dto.ExchangeStaffRoomDTO;
+import com.kaiyu.domain.dto.ExchangeRoomApplyDTO;
 import com.kaiyu.domain.vo.LeaveInfo;
 import com.kaiyu.service.ICheckInService;
 import java.util.ArrayList;
@@ -70,6 +71,13 @@ public class CheckInController {
   @PostMapping({"/exchangeStaffRoom"})
   public R<Void> exchangeStaffRoom(@RequestBody ExchangeStaffRoomDTO dto) {
     this.IcheckInService.exchangeStaffRoom(dto);
+    return R.ok();
+  }
+
+  @PostMapping({"/exchangeRoomApply"})
+  public R<Void> exchangeRoomApply(@RequestBody ExchangeRoomApplyDTO dto) {
+    
+    this.IcheckInService.exchangeRoomApply(dto);
     return R.ok();
   }
 }

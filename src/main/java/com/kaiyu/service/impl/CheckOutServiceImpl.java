@@ -37,16 +37,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.beans.BeanUtils;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaiyu.mapper.CheckOutMapper;
+import com.kaiyu.mapper.StaffInfoMapper;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import com.kaiyu.domain.dto.BuildingListDTO;
 import com.kaiyu.domain.dto.StaffListDTO;
 import com.kaiyu.domain.dto.CheckOutListDTO;
+import com.kaiyu.domain.dto.CheckOutDTO;
 import com.kaiyu.domain.vo.LeaveInfo;
 import com.kaiyu.domain.vo.BuildingRest;
 import com.kaiyu.domain.vo.BuildingInfoRest;
@@ -57,10 +60,16 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.kaiyu.utils.UserHolder;
+
 
 @Service
 @Slf4j
 public class CheckOutServiceImpl extends ServiceImpl<CheckOutMapper, LeaveInfo> implements ICheckOutService {
+
+    @Autowired
+    private StaffInfoMapper staffInfoMapper;
+    
 
     // 退宿记录查询
     @Override
@@ -70,6 +79,7 @@ public class CheckOutServiceImpl extends ServiceImpl<CheckOutMapper, LeaveInfo> 
         QueryWrapper<LeaveInfo> queryWrapper = new QueryWrapper<>();
         // 根据 DTO 中的条件动态添加查询条件
         queryWrapper
+          .eq(ObjectUtils.isNotEmpty(dto.getOperator()), "operator", dto.getOperator())
           .eq(ObjectUtils.isNotEmpty(dto.getStaffName()), "staff_name", dto.getStaffName())
           .eq(ObjectUtils.isNotEmpty(dto.getPassportNo()), "passport_no", dto.getPassportNo())
           .ge(ObjectUtils.isNotEmpty(dto.getStartTime()), "DATE(create_time)", dto.getStartTime())
@@ -84,6 +94,17 @@ public class CheckOutServiceImpl extends ServiceImpl<CheckOutMapper, LeaveInfo> 
     @Override
     public List<LeaveInfo> selectLeaveInfoAll() {
         return this.baseMapper.selectList(null);
+    }
+
+    @Override
+    public void checkOutStaff(CheckOutDTO dto) {
+        // this.baseMapper.checkOutStaff(dto);
+        this.staffInfoMapper.deleteById(dto.getStaffId());
+        LeaveInfo leaveInfo = new LeaveInfo();
+        BeanUtils.copyProperties(dto, leaveInfo);
+        leaveInfo.setOperator(UserHolder.getLoginUser().getUserName());
+        log.info("dto: {}", dto.getStaffId());
+        this.baseMapper.insert(leaveInfo);
     }
 }
 
