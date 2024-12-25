@@ -82,6 +82,7 @@ public class CheckOutServiceImpl extends ServiceImpl<CheckOutMapper, LeaveInfo> 
           .eq(ObjectUtils.isNotEmpty(dto.getOperator()), "operator", dto.getOperator())
           .eq(ObjectUtils.isNotEmpty(dto.getStaffName()), "staff_name", dto.getStaffName())
           .eq(ObjectUtils.isNotEmpty(dto.getPassportNo()), "passport_no", dto.getPassportNo())
+          .eq(ObjectUtils.isNotEmpty(dto.getStaffNum()), "staff_num", dto.getStaffNum())
           .ge(ObjectUtils.isNotEmpty(dto.getStartTime()), "DATE(create_time)", dto.getStartTime())
           .le(ObjectUtils.isNotEmpty(dto.getEndTime()), "DATE(create_time)", dto.getEndTime());
         // 执行分页查询

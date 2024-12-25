@@ -14,6 +14,8 @@ public class LeaveInfo {
     private String roomInfo;       // 房间信息
     @TableField("staff_name")
     private String staffName;      // 员工姓名
+    @TableField("staff_num")
+    private String staffNum;       // 工号
     @TableField("passport_no")
     private String passportNo;     // 护照号
     @TableField("sex")

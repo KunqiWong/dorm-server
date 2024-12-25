@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `dorm`.`leave_info`(
     `operator` varchar(50) NOT NULL DEFAULT '' COMMENT '登记人',
     `room_info` varchar(50) NULL DEFAULT '',
     `staff_name` varchar(50) NOT NULL DEFAULT '',
+    `staff_num` varchar(50) NOT NULL DEFAULT '',
     `sex` varchar(50) NOT NULL DEFAULT '',
     `dept` varchar(100) NOT NULL DEFAULT '',
     `checkin_date` varchar(50) NOT NULL DEFAULT '',

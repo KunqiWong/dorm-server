@@ -18,6 +18,8 @@ public class CheckOutListDTO extends PageQuery {
 
     private String staffName;
 
+    private String staffNum;
+
     private String passportNo;
 
 }

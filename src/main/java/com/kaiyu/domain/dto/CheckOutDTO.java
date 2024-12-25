@@ -13,6 +13,7 @@ public class CheckOutDTO extends PageQuery {
     private String staffId;
     private String roomInfo;
     private String staffName;
+    private String staffNum;
     private String sex;
     private String dept;
     private String checkInDate;
