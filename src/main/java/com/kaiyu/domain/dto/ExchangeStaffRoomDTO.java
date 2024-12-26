@@ -22,5 +22,6 @@ public class ExchangeStaffRoomDTO {
     private String roomStandard;
     private String bedNum;
     
+    private String updateTime;
     private String updateBy;
 }

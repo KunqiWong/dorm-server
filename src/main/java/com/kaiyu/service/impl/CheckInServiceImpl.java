@@ -64,6 +64,9 @@ import java.util.HashMap;
 import com.kaiyu.domain.dto.ExchangeRoomApplyDTO;
 import com.kaiyu.domain.vo.UserInfo;
 import com.kaiyu.utils.UserHolder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Service
 @Slf4j
@@ -277,6 +280,8 @@ public class CheckInServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo> 
     public void exchangeStaffRoom(ExchangeStaffRoomDTO dto) {
         UserInfo loginUser = UserHolder.getLoginUser();
         dto.setUpdateBy(loginUser.getUserName());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dto.setUpdateTime(sdf.format(new Date()));
         DormLog dormLog = new DormLog();
         dormLog.setOperateType("调换记录");
 
