@@ -38,4 +38,8 @@ public class BuildingInfo {
 
     private String updateBy;
 
+    private String updateTime;
+
+    private String createTime;
+
 }

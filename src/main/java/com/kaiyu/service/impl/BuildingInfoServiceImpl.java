@@ -25,6 +25,7 @@ import com.kaiyu.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +39,8 @@ import org.springframework.util.CollectionUtils;
 
 import com.kaiyu.domain.vo.UserInfo;
 import com.kaiyu.service.IDormLogService;
+
+import java.util.Date;
 
 @Slf4j
 @Service
@@ -94,6 +97,8 @@ public class BuildingInfoServiceImpl extends ServiceImpl<BuildingMapper, Buildin
     public void saveBuildingInfo(BuildingInfo dto) {
         UserInfo loginUser = UserHolder.getLoginUser();
         dto.setUpdateBy(loginUser.getUserName());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dto.setUpdateTime(sdf.format(new Date()));
         if(dto.getId() == null){
             this.BuildingMapper.insertBuildingInfo(dto);
             DormLog log = new DormLog();
@@ -131,7 +136,9 @@ public class BuildingInfoServiceImpl extends ServiceImpl<BuildingMapper, Buildin
                 .eq(ObjectUtils.isNotEmpty(item.getBuildingNum()), BuildingInfo::getBuildingNum, item.getBuildingNum()) 
                 .eq(ObjectUtils.isNotEmpty(item.getRoomNum()), BuildingInfo::getRoomNum, item.getRoomNum())
                 .exists(); // 检查记录是否存在
-                item.setUpdateBy(loginUser.getUserName());
+            item.setUpdateBy(loginUser.getUserName());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            item.setUpdateTime(sdf.format(new Date()));
             if (recordExists) {
                 BuildingInfo oldData = lambdaQuery()
                 .eq(BuildingInfo::getBuildingNum, item.getBuildingNum()) 

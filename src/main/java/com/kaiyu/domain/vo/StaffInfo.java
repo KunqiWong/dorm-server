@@ -72,4 +72,7 @@ public class StaffInfo {
     @JsonAlias("添加时间")
     private String createTime;
 
+    @JsonAlias("修改时间")
+    private String updateTime;
+
 }

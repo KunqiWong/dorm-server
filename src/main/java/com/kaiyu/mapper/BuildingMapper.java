@@ -28,14 +28,14 @@ public interface BuildingMapper extends BaseMapper<BuildingInfo> {
   @Select("SELECT * FROM building_info ")
   List<BuildingInfo> selectBuildingInfoAll();
   
-  @Insert("INSERT INTO building_info (building_num, floor, room_num, capacity, capacity_num, room_type, room_standard, remark) VALUES (#{buildingNum}, #{floor}, #{roomNum}, #{capacity}, #{capacityNum}, #{roomType}, #{roomStandard}, #{remark})")
+  @Insert("INSERT INTO building_info (building_num, floor, room_num, capacity, capacity_num, room_type, room_standard, remark, update_by,update_time) VALUES (#{buildingNum}, #{floor}, #{roomNum}, #{capacity}, #{capacityNum}, #{roomType}, #{roomStandard}, #{remark}, #{updateBy},#{updateTime})")
   void insertBuildingInfo(BuildingInfo paramBuildingInfo);
   
   
-  @Update("UPDATE building_info SET building_num = #{buildingNum}, floor = #{floor}, room_num = #{roomNum}, capacity = #{capacity}, capacity_num = #{capacityNum}, room_type = #{roomType}, room_standard = #{roomStandard}, remark = #{remark} WHERE id = #{id}")
+  @Update("UPDATE building_info SET building_num = #{buildingNum}, floor = #{floor}, room_num = #{roomNum}, capacity = #{capacity}, capacity_num = #{capacityNum}, room_type = #{roomType}, room_standard = #{roomStandard}, remark = #{remark}, update_by = #{updateBy},update_time = #{updateTime} WHERE id = #{id}")
   void updateBuildingInfo(BuildingInfo paramBuildingInfo);
 
-  @Update("UPDATE building_info SET building_num = #{buildingNum}, floor = #{floor}, room_num = #{roomNum}, capacity = #{capacity}, capacity_num = #{capacityNum}, room_type = #{roomType}, room_standard = #{roomStandard}, remark = #{remark} WHERE building_num = #{buildingNum} AND room_num = #{roomNum}")
+  @Update("UPDATE building_info SET building_num = #{buildingNum}, floor = #{floor}, room_num = #{roomNum}, capacity = #{capacity}, capacity_num = #{capacityNum}, room_type = #{roomType}, room_standard = #{roomStandard}, remark = #{remark}, update_by = #{updateBy},update_time = #{updateTime} WHERE building_num = #{buildingNum} AND room_num = #{roomNum}")
   int updateBuildingBatch(BuildingInfo paramBuildingInfo);
   
   @Delete("DELETE FROM building_info WHERE id = #{id}")

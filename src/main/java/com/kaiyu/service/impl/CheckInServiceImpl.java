@@ -62,7 +62,8 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.kaiyu.domain.dto.ExchangeRoomApplyDTO;
-
+import com.kaiyu.domain.vo.UserInfo;
+import com.kaiyu.utils.UserHolder;
 
 @Service
 @Slf4j
@@ -274,6 +275,8 @@ public class CheckInServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo> 
 
     @Override
     public void exchangeStaffRoom(ExchangeStaffRoomDTO dto) {
+        UserInfo loginUser = UserHolder.getLoginUser();
+        dto.setUpdateBy(loginUser.getUserName());
         DormLog dormLog = new DormLog();
         dormLog.setOperateType("调换记录");
 

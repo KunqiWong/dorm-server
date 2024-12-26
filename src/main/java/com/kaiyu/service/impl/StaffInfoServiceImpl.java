@@ -10,6 +10,8 @@ import com.kaiyu.mapper.StaffInfoMapper;
 import com.kaiyu.service.IStaffInfoService;
 import com.kaiyu.utils.UserHolder;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,6 +74,8 @@ public class StaffInfoServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo
     public void saveStaffInfo(StaffInfo dto) {
         UserInfo loginUser = UserHolder.getLoginUser();
         dto.setUpdateBy(loginUser.getUserName());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dto.setUpdateTime(sdf.format(new Date()));
         if(dto.getId() == null){
             this.StaffInfoMapper.insert(dto);
             DormLog log = new DormLog();
@@ -115,6 +119,8 @@ public class StaffInfoServiceImpl extends ServiceImpl<StaffInfoMapper, StaffInfo
             } 
             log.info("recordExists: {},id: {}", recordExists,item.getId());
             item.setUpdateBy(loginUser.getUserName());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            item.setUpdateTime(sdf.format(new Date()));
             if(recordExists){
                 StaffInfo oldData = this.StaffInfoMapper.selectById(item.getId()); // 获取修改前的数据
                 this.StaffInfoMapper.updateById(item);
